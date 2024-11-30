@@ -14,6 +14,7 @@ import * as $characters from "./routes/characters.tsx";
 import * as $greet_name_ from "./routes/greet/[name].tsx";
 import * as $index from "./routes/index.tsx";
 import * as $ComicDisplay from "./islands/ComicDisplay.tsx";
+import * as $ComicNav from "./islands/ComicNav.tsx";
 import * as $Counter from "./islands/Counter.tsx";
 import * as $Nav from "./islands/Nav.tsx";
 import * as $NavItem from "./islands/NavItem.tsx";
@@ -35,6 +36,7 @@ const manifest = {
   },
   islands: {
     "./islands/ComicDisplay.tsx": $ComicDisplay,
+    "./islands/ComicNav.tsx": $ComicNav,
     "./islands/Counter.tsx": $Counter,
     "./islands/Nav.tsx": $Nav,
     "./islands/NavItem.tsx": $NavItem,

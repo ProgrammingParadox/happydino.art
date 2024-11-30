@@ -130,7 +130,18 @@ body {
     display: none;
   }
 }
-#strip-of-the-day {
+.section {
+  scrollbar-gutter: stable both-edges;
+  overflow-y: auto;
+}
+.strip-holder {
+  min-height: 50vh;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.strip {
   display: flex;
   flex-direction: column;
   padding-top: 5%;
@@ -148,7 +159,7 @@ body {
 #comic-nav {
   display: flex;
   justify-content: space-between;
-  padding: 1%;
+  padding: 10px;
 }
 #comic-nav > button {
   border: none;

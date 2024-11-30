@@ -10,11 +10,7 @@ export default function Home(props: any, ctx: any) {
     return (
         <>
             <div id="page">
-                <div className="section">
-                    <div className="strip" id="strip-of-the-day">
-                        <ComicDisplay />
-                    </div>
-                </div>
+                <ComicDisplay />
             </div>
         </>
     );

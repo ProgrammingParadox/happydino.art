@@ -1,6 +1,7 @@
 
 import * as Preact from "preact";
 import Comic from "../components/Comic.tsx";
+import ComicNav from "./ComicNav.tsx";
 
 export default class ComicDisplay extends Preact.Component {
     // constructor(props: any) {
@@ -14,10 +15,42 @@ export default class ComicDisplay extends Preact.Component {
         this.setState({ id });
     }
 
+    nextComic() {
+        // this.setState({
+        //     id: Number(this.state.id) + 1
+        // });
+
+        globalThis.location.href = "/?c=" + (Number(this.state.id) + 1);
+    }
+
+    lastComic() {
+        // this.setState({
+        //     id: Number(this.state.id) - 1
+        // });
+
+        globalThis.location.href = "/?c=" + (Number(this.state.id) - 1);
+    }
+
+    randomComic() {
+        // TODO!
+    }
+
     // deno-lint-ignore no-explicit-any
     override render(props: any) {
         return (
-            <Comic id={ this.state.id ?? 1 }/>
+            <div className="strip">
+                <ComicNav
+                    last={this.lastComic.bind(this)}
+                    next={this.nextComic.bind(this)}
+                />
+
+                <Comic id={this.state.id}/>
+
+                <ComicNav
+                    last={this.lastComic.bind(this)}
+                    next={this.nextComic.bind(this)}
+                />
+            </div>
         );
     }
 }
