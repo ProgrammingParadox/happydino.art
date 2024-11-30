@@ -12,7 +12,7 @@ export default class ComicDisplay extends Preact.Component {
         const params = new URLSearchParams(globalThis.location?.search);
         const id = params.get("c"); // is the number 123
 
-        this.setState({ id });
+        this.setState({ id: id ?? 1 });
     }
 
     nextComic() {
