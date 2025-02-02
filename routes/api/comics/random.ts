@@ -20,16 +20,12 @@ export const handler: Handlers = {
                 /(.+)\.png/, "$1"
             );
 
-        // Create a new headers object from an object literal.
         const myHeaders = new Headers({
             "Access-Control-Allow-Origin":  "http://localhost:8000",
             "Access-Control-Allow-Methods": "POST",
             "Access-Control-Allow-Headers": "Content-Type, Authorization",
             "accept": "application/json",
         });
-
-        // Append a header to the headers object.
-        myHeaders.append("user-agent", "Deno Deploy");
 
         return new Response(comic, {
             headers: myHeaders,
