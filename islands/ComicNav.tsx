@@ -9,9 +9,12 @@ export default function ComicNav(props: object) {
                 &lt;
             </button>
 
-            {/*<button id="random">*/}
-            {/*    random*/}
-            {/*</button>*/}
+            <button 
+                id="random"
+                onClick={props.random}
+            >
+                random
+            </button>
 
             <button
                 id="next"

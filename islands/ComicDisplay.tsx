@@ -31,6 +31,15 @@ export default class ComicDisplay extends Preact.Component {
         globalThis.location.href = "/?c=" + (Number(this.state.id) - 1);
     }
 
+    random(){
+        fetch("https://happydino.art/api/comics/random",{ mode: 'no-cors'})
+            .then((r: Response) => r.text())
+            .then(r => {
+                console.log(r);
+                return globalThis.location.href = `/?c=${r}`;
+            });
+    }
+
     randomComic() {
         // TODO!
     }
@@ -42,6 +51,7 @@ export default class ComicDisplay extends Preact.Component {
                 <ComicNav
                     last={this.lastComic.bind(this)}
                     next={this.nextComic.bind(this)}
+                    random={this.random.bind(this)}
                 />
 
                 <Comic id={this.state.id}/>
@@ -49,6 +59,7 @@ export default class ComicDisplay extends Preact.Component {
                 <ComicNav
                     last={this.lastComic.bind(this)}
                     next={this.nextComic.bind(this)}
+                    random={this.random.bind(this)}
                 />
             </div>
         );
