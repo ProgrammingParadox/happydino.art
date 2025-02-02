@@ -32,7 +32,7 @@ export default class ComicDisplay extends Preact.Component {
     }
 
     random(){
-        fetch("https://happydino.art/api/comics/random",{ mode: 'no-cors'})
+        fetch("https://happydino.art/api/comics/random")
             .then((r: Response) => r.text())
             .then(r => {
                 console.log(r);
