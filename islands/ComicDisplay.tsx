@@ -32,12 +32,20 @@ export default class ComicDisplay extends Preact.Component {
     }
 
     random(){
-        fetch("https://happydino.art/api/comics/random")
-            .then((r: Response) => r.text())
-            .then(r => {
-                console.log(r);
-                return globalThis.location.href = `/?c=${r}`;
-            });
+        // deno-lint-ignore no-this-alias
+        const obj = this; // this is probably not the best way to do this
+
+        function rand(){
+            fetch("https://happydino.art/api/comics/random")
+                .then((r: Response) => r.text())
+                .then(r =>
+                    r == obj.state.id ?
+                        rand.call(obj) :
+                        globalThis.location.href = `/?c=${r}`
+                );
+        }
+
+        rand.call(obj);
     }
 
     randomComic() {
