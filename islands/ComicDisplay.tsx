@@ -15,28 +15,24 @@ export default class ComicDisplay extends Preact.Component {
         this.setState({ id: id ?? 1 });
     }
 
-    nextComic() {
-        const comic = (Number(this.state.id) + 1);
+    async comicExists(comic: number, offset: number = 0): Promise<boolean> {
+        return await fetch("https://happydino.art/api/comics/" + (comic + offset))
+            .then(res => res.ok);
+    }
 
-        fetch("https://happydino.art/api/comics/" + comic)
-            .then(res => res.ok)
-            .then(ok => ok ?? (
+    changeComic(comic: number) {
+        this.comicExists(comic)
+            .then(ok => ok ? (
                 globalThis.location.href = "/?c=" + comic
-            ));
+            ) : void 0);
+    }
 
-        // this.setState({
-        //     id: Number(this.state.id) + 1
-        // });
-
-
+    nextComic() {
+        this.changeComic(Number(this.state.id) + 1);
     }
 
     lastComic() {
-        // this.setState({
-        //     id: Number(this.state.id) - 1
-        // });
-
-        globalThis.location.href = "/?c=" + (Number(this.state.id) - 1);
+        this.changeComic(Number(this.state.id) - 1);
     }
 
     random(){
@@ -54,10 +50,6 @@ export default class ComicDisplay extends Preact.Component {
         }
 
         rand.call(obj);
-    }
-
-    randomComic() {
-        // TODO!
     }
 
     // deno-lint-ignore no-explicit-any
