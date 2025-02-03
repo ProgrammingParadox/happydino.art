@@ -11,7 +11,11 @@ export const handler: Handlers = {
         return await Deno.readFile(`./static/comics/${id}.png`)
             .then(img =>
                 new Response(img, { headers: {
-                    "content-type": "image/png"
+                    "content-type": "image/png",
+                    "Access-Control-Allow-Origin":  "http://localhost:8000",
+                    "Access-Control-Allow-Methods": "POST",
+                    "Access-Control-Allow-Headers": "Content-Type, Authorization",
+                    "accept": "application/json",
                 }, status: 200 })
             ).catch(_ =>
                 new Response(undefined, { status: 404 })

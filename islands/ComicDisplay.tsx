@@ -16,11 +16,19 @@ export default class ComicDisplay extends Preact.Component {
     }
 
     nextComic() {
+        const comic = (Number(this.state.id) + 1);
+
+        fetch("https://happydino.art/api/comics/" + comic)
+            .then(res => res.ok)
+            .then(ok => ok ?? (
+                globalThis.location.href = "/?c=" + comic
+            ));
+
         // this.setState({
         //     id: Number(this.state.id) + 1
         // });
 
-        globalThis.location.href = "/?c=" + (Number(this.state.id) + 1);
+
     }
 
     lastComic() {
