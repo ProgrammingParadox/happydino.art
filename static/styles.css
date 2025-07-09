@@ -103,8 +103,8 @@ body {
 }
 @media (max-width: 500px) {
   .nav-item-name {
-    min-width: 85px;
-    max-width: 130px;
+    min-width: 85px !important;
+    max-width: 130px !important;
   }
 }
 @media (max-width: 500px) {
