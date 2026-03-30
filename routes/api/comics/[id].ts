@@ -1,7 +1,5 @@
 import { Handlers } from "$fresh/server.ts";
 
-const kv = await Deno.openKv();
-
 export const handler: Handlers = {
     async GET(_req, ctx) {
         const id = ctx.params.id;
