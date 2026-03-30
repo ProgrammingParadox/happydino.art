@@ -1,7 +1,5 @@
 import { Handlers } from "$fresh/server.ts";
 
-const kv = await Deno.openKv();
-
 export const handler: Handlers = {
     // because I don't understand typescript
     // deno-lint-ignore no-explicit-any
